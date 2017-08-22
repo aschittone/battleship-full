@@ -12,11 +12,49 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require cable.js
 //= require components/grid.js
 //= require components/ship.js
-console.log('step 0')
+
+function createConsumer() {
+	const CableApp = {}
+	CableApp.cable = ActionCable.createConsumer(`ws://${window.location.hostname}:3000/gamecast`)
+	return CableApp
+}
+
+function subScribeToGame(cable) {
+	cable.gamecast = cable.cable.subscriptions.create({channel: "GameChannel",game:"one"},
+      {
+        received: (message) => console.log('playing together')
+      })
+	return cable.gamecast 
+}
+
+function sendGameCastAction(cable,msg) {
+	cable.send(msg)
+}
 
 document.addEventListener('turbolinks:load', function(){
+	// cable = createConsumer()
+	// subScribeToGame(cable)
+	// sendGameCastAction(gamecast,{msg:'test'})
+
+	const CableApp = {}
+	CableApp.cable = ActionCable.createConsumer(`ws://${window.location.hostname}:3000/gamecast`)
+	CableApp.gamecast = CableApp.cable.subscriptions.create({channel: "GameChannel",game:"one"},
+      {
+        received: (message) => console.log('playing together')
+      })
+
+	const triggger = document.getElementById('send-msg')
+	triggger.addEventListener('click',send)
+	
+	function send() {
+		CableApp.gamecast.send({m:'fasffsadf'})
+	}
+
+	
+	
 	console.log('triggered event')
 	document.getElementById('grid-container').addEventListener('click', function(event) {
 		if (event.target && event.target.matches("input.submit-button")) {

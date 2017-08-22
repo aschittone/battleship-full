@@ -86,6 +86,10 @@ function CreateShip() {
             //      alert('this is an invalid position, please choose another.')
             //  }
          }
+
+         static all() {
+            return all;
+         }
 	}
 }
 

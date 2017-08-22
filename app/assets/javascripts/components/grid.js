@@ -101,6 +101,32 @@ function CreateGrid() {
 			this.firingBoard[firingCoordinate] = 2
 			alert('you have hit their ship!')
 			document.getElementById(firingCoordinate).style = "background-color: red;"
+
+			var opponentsShips = Ship.all().filter(ship => ship.grid === opponentsGrid)
+			var hitCount = 0
+			var splitCoordinates = firingCoordinate.split(',').map(num => (parseInt(num)))
+			debugger
+			var hitShip;
+			opponentsShips.forEach(function(ship) {
+				debugger
+				for (var i = 0; i < ship.coordinates.length; i++) {
+					if (ship.coordinates[i][0] === splitCoordinates[0] && ship.coordinates[i][1] === splitCoordinates[1]) {
+						hitShip = ship;
+					}
+				}
+				debugger
+			})
+			hitShip.coordinates.forEach(function(coordinate) {
+				if (opponentsGrid.placedShipCoordinates[coordinate.join(",")] === 2) {
+					hitCount += 1
+					debugger
+					if (hitCount === hitShip.coordinates.length) {
+						alert('you destroyed the ship')
+					}
+				}
+
+			})
+
 		} else {
 			debugger
 			opponentsGrid.placedShipCoordinates[firingCoordinate] = 0
