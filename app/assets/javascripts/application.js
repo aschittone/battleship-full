@@ -16,6 +16,7 @@
 //= require components/grid.js
 //= require components/ship.js
 
+
 function createConsumer() {
 	const CableApp = {}
 	CableApp.cable = ActionCable.createConsumer(`ws://${window.location.hostname}:3000/gamecast`)
@@ -27,7 +28,7 @@ function subScribeToGame(cable) {
       {
         received: (message) => console.log('playing together')
       })
-	return cable.gamecast 
+	return cable.gamecast
 }
 
 function sendGameCastAction(cable,msg) {
@@ -44,7 +45,7 @@ document.addEventListener('turbolinks:load', function(){
 	CableApp.gamecast = CableApp.cable.subscriptions.create({channel: "GameChannel",game:"one"},
       {
         received: function(message) {
-        	debugger
+
         	var action = message.action;
         	action(message[playerOne]);
         }
@@ -52,14 +53,14 @@ document.addEventListener('turbolinks:load', function(){
 
 	const trigger = document.getElementById('send-msg')
 	trigger.addEventListener('click', sendData(renderWinScreen))
-	
+
 	function sendData(actionToDo) {
-		debugger
+
 		CableApp.gamecast.send({playerOne: Grid.all()[0], playerTwo: Grid.all()[1], action: actionToDo})
 	}
 
-	
-	
+
+
 	console.log('triggered event')
 	document.getElementById('grid-container').addEventListener('click', function(event) {
 		if (event.target && event.target.matches("input.submit-button")) {
@@ -99,7 +100,7 @@ document.addEventListener('turbolinks:load', function(){
 				opponentsGrid = grid
 			}
 		})
-		
+
 		currentGrid.fireTorpedo(firingCoordinate, opponentsGrid)
 
 	})
@@ -127,11 +128,3 @@ function renderWinScreen(grid) {
 	document.getElementById('players-grid').innerHTML = "";
 	document.getElementById('alerts').innerHTML = `<center><h1>${grid.user} won the game!!!</h1></center>`
 }
-
-
-
-
-
-
-
-
