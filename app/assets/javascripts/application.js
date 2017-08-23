@@ -100,4 +100,34 @@ document.addEventListener('turbolinks:load', function(){
 
 	})
 
+	document.getElementById('alerts').addEventListener('click', function(event) {
+		event.preventDefault();
+		if (event.target && event.target.nodeName == 'BUTTON') {
+			var nextGridId = parseInt(event.target.id)
+			document.getElementById('alerts').innerHTML = "";
+			Grid.all()[nextGridId].renderPlayingBoard();
+		}
+	})
+
 });
+
+
+function renderTransferScreen(opponentsGrid) {
+	document.getElementById('firing-grid').innerHTML = "";
+	document.getElementById('players-grid').innerHTML = "";
+	document.getElementById('alerts').innerHTML = `<center><h2>Switching Players....</h2><h5>Pass the computer to your opponent</h5><button id="${opponentsGrid.id}">Click to switch player</button></center>`
+}
+
+function renderWinScreen(grid) {
+	document.getElementById('firing-grid').innerHTML = "";
+	document.getElementById('players-grid').innerHTML = "";
+	document.getElementById('alerts').innerHTML = `<center><h1>${grid.user} won the game!!!</h1></center>`
+}
+
+
+
+
+
+
+
+

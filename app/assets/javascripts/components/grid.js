@@ -134,10 +134,29 @@ function CreateGrid() {
 			alert('you have missed')
 			document.getElementById(firingCoordinate).style = "background-color: blue;"
 		}
-		opponentsGrid.renderPlayingBoard()
+		if (Grid.gameWon(opponentsGrid)) {
+			renderWinScreen(this)
+		} else {
+			renderTransferScreen(opponentsGrid);
+		}
+		
+		//opponentsGrid.renderPlayingBoard()
 	}
 
-
+	static gameWon(opponentsGrid) {
+		var destroyedShipCounter = 0;
+		var opponentsCoordinates = opponentsGrid.placedShipCoordinates;
+		for (var coordinate in opponentsCoordinates) {
+			if (opponentsCoordinates[coordinate] === 2) {
+				destroyedShipCounter++;
+			}
+		}
+		if (destroyedShipCounter === 10) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 
 	//
