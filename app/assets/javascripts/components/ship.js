@@ -19,17 +19,18 @@ function CreateShip() {
 		static insertShips() {
 			var insertArea = document.getElementById('insert-ships')
 			insertArea.innerHTML = `
-			<li id="1">Destroyer</li>
-			<li id="2">Cruiser</li>
-			<li id="3">Submarine</li>
-			<li id="4">Carrier</li>
+			<button id="1">Destroyer</button>
+			<button id="2">Cruiser</button>
+			<button id="3">Submarine</button>
+			<button id="4">Battleship</button>
+            <button id="5">Carrier</button>
 			`
 		}
 
 		setCoordinates(selectedCoordinates) {
 			if (parseInt(this.size) !== this.coordinates.length) {
 				this.checkPosition(selectedCoordinates)
-				if (Object.keys(this.grid.placedShipCoordinates).length === 10) {
+				if (Object.keys(this.grid.placedShipCoordinates).length === 15) {
 					alert('you have completed placing this ship. please give the computer to your oponent')
 				} else if (parseInt(this.size) === this.coordinates.length){
 					alert('you have completed placing this ship')

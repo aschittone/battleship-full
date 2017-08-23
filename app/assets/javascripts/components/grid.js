@@ -73,11 +73,11 @@ function CreateGrid() {
 		}
 
 		checkFinished() {
-			if (Object.keys(this.placedShipCoordinates).length === 10) {
+			if (Object.keys(this.placedShipCoordinates).length === 15) {
 				// alert('please give the computer to your oponent so they can place their ships')
 				Grid.renderForm()
 			}
-			if (Grid.all().length === 2 && Object.keys(this.placedShipCoordinates).length === 10) {
+			if (Grid.all().length === 2 && Object.keys(this.placedShipCoordinates).length === 15) {
 				var firstPlayer = Grid.all()[0].user
 				Grid.renderBoards(firstPlayer)
 			}
@@ -95,7 +95,6 @@ function CreateGrid() {
 	}
 
 	fireTorpedo(firingCoordinate, opponentsGrid) {
-		debugger
 		if (Object.keys(opponentsGrid.placedShipCoordinates).includes(firingCoordinate)) {
 			opponentsGrid.placedShipCoordinates[firingCoordinate] = 2
 			this.firingBoard[firingCoordinate] = 2
@@ -105,21 +104,17 @@ function CreateGrid() {
 			var opponentsShips = Ship.all().filter(ship => ship.grid === opponentsGrid)
 			var hitCount = 0
 			var splitCoordinates = firingCoordinate.split(',').map(num => (parseInt(num)))
-			debugger
 			var hitShip;
 			opponentsShips.forEach(function(ship) {
-				debugger
 				for (var i = 0; i < ship.coordinates.length; i++) {
 					if (ship.coordinates[i][0] === splitCoordinates[0] && ship.coordinates[i][1] === splitCoordinates[1]) {
 						hitShip = ship;
 					}
 				}
-				debugger
 			})
 			hitShip.coordinates.forEach(function(coordinate) {
 				if (opponentsGrid.placedShipCoordinates[coordinate.join(",")] === 2) {
 					hitCount += 1
-					debugger
 					if (hitCount === hitShip.coordinates.length) {
 						alert('you destroyed the ship')
 					}
@@ -128,7 +123,6 @@ function CreateGrid() {
 			})
 
 		} else {
-			debugger
 			opponentsGrid.placedShipCoordinates[firingCoordinate] = 0
 			this.firingBoard[firingCoordinate] = 0
 			alert('you have missed')
@@ -151,50 +145,21 @@ function CreateGrid() {
 				destroyedShipCounter++;
 			}
 		}
-		if (destroyedShipCounter === 10) {
+		if (destroyedShipCounter === 15) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-
-	//
-	// 	}
-	// 	for (var coordinate in opponentsGrid.placedShipCoordinates) {
-	// 		if (coordinate === firingCoordinate) {
-	// 			opponentsGrid.placedShipCoordinates[coordinate] = 2
-	// 			this.firingBoard[coordinate] = 2
-	// 			debugger
-	// 			document.getElementById(firingCoordinate).style = "background-color: red;"
-	// 			alert('you have hit their ship!')
-	// 		} else {
-	// 			opponentsGrid.placedShipCoordinates[firingCoordinate] = 0
-	// 			this.firingBoard[firingCoordinate] = 0
-	// 			document.getElementById(firingCoordinate).style = "background-color: blue;"
-	// 			alert('you have missed')
-	// 		}
-	// 	}
-	// 	opponentsGrid.renderPlayingBoard()
-	// }
-
 	addShip(coordinates){
         document.getElementById(coordinates).style = "background-color: black;"
     }
 
-		static all() {
-			return all
-		}
+	static all() {
+		return all
+	}
 
-
-
-		createEventListeners(){
-
-		}
-
-		updateRender(){
-
-		}
 	}
 }
 

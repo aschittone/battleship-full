@@ -43,14 +43,19 @@ document.addEventListener('turbolinks:load', function(){
 	CableApp.cable = ActionCable.createConsumer(`ws://${window.location.hostname}:3000/gamecast`)
 	CableApp.gamecast = CableApp.cable.subscriptions.create({channel: "GameChannel",game:"one"},
       {
-        received: (message) => console.log('playing together')
+        received: function(message) {
+        	debugger
+        	var action = message.action;
+        	action(message[playerOne]);
+        }
       })
 
-	const triggger = document.getElementById('send-msg')
-	triggger.addEventListener('click',send)
+	const trigger = document.getElementById('send-msg')
+	trigger.addEventListener('click', sendData(renderWinScreen))
 	
-	function send() {
-		CableApp.gamecast.send({m:'fasffsadf'})
+	function sendData(actionToDo) {
+		debugger
+		CableApp.gamecast.send({playerOne: Grid.all()[0], playerTwo: Grid.all()[1], action: actionToDo})
 	}
 
 	
@@ -61,12 +66,12 @@ document.addEventListener('turbolinks:load', function(){
 			event.preventDefault()
 			newGrid = new Grid(document.getElementById('create-name').value)
 
-
 		}
 	})
 	document.getElementById('insert-ships').addEventListener('click', function(event){
+		event.preventDefault();
 		size = event.target.id
-		document.getElementById('ship-info').innerHTML = `This ship is ${size}, click on the grid to place the ship`
+		document.getElementById('insert-ships').innerHTML = `This ship is ${size}, click on the grid to place the ship`
 		currentShip = new Ship(event.target.innerHTML, newGrid, size)
 		Ship.removeShip(size)
 
@@ -91,7 +96,6 @@ document.addEventListener('turbolinks:load', function(){
 		var opponentsGrid;
 		Grid.all().forEach(function(grid) {
 			if (grid.id !== currentGrid.id) {
-				debugger
 				opponentsGrid = grid
 			}
 		})
