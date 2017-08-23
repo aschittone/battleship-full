@@ -23,16 +23,23 @@ function createConsumer() {
 }
 
 function subScribeToGame(cable) {
-	cable.gamecast = cable.cable.subscriptions.create({channel: "GameChannel",game:"one"},
-      {
+	if (cable.cable.subscriptions.length === 0) {
+		cable.gamecast = cable.cable.subscriptions.create({channel: "GameChannel", game:"one"}, {
         received: (message) => console.log('playing together')
       })
+	} else {
+		cable.gamecast = cable.cable.subscriptions.create({channel: "GameChannel", game:"two"}, {
+        received: (message) => console.log('playing together')
+      })	
+	}
 	return cable.gamecast 
 }
 
 function sendGameCastAction(cable,msg) {
 	cable.send(msg)
 }
+
+const functions = { renderWinScreen: renderWinScreen}
 
 document.addEventListener('turbolinks:load', function(){
 	// cable = createConsumer()
@@ -41,21 +48,38 @@ document.addEventListener('turbolinks:load', function(){
 
 	const CableApp = {}
 	CableApp.cable = ActionCable.createConsumer(`ws://${window.location.hostname}:3000/gamecast`)
-	CableApp.gamecast = CableApp.cable.subscriptions.create({channel: "GameChannel",game:"one"},
-      {
-        received: function(message) {
-        	debugger
-        	var action = message.action;
-        	action(message[playerOne]);
-        }
-      })
+	
+
+	// if (!cable.cable.subscriptions) {
+	// 	cable.gamecast = cable.cable.subscriptions.create({channel: "GameChannel", game:"one"}
+ //      })
+	// } else {
+	// 	cable.gamecast = cable.cable.subscriptions.create({channel: "GameChannel", game:"two"}  	
+	// }) 
+	subScribeToGame(CableApp)
+
+	// CableApp.gamecast = CableApp.cable.subscriptions.create({channel: "GameChannel",game:"one"},
+ //      {
+ //        received: function(message) {
+        	
+ //        	debugger
+ //        	var action = functions[message.toDo];
+ //        	var otherPlayer = message.playerOne
+ //        	Grid.all().push(otherPlayer)
+ //        	console.log(message)
+ //        	//action(message.playerOne);
+ //        }
+ //      })
 
 	const trigger = document.getElementById('send-msg')
-	trigger.addEventListener('click', sendData(renderWinScreen))
+	trigger.addEventListener('click', function() {
+		sendData('renderWinScreen')
+	})
 	
 	function sendData(actionToDo) {
 		debugger
-		CableApp.gamecast.send({playerOne: Grid.all()[0], playerTwo: Grid.all()[1], action: actionToDo})
+		CableApp.gamecast.send({grids: Grid.all(), toDo: actionToDo})
+
 	}
 
 	
@@ -71,7 +95,7 @@ document.addEventListener('turbolinks:load', function(){
 	document.getElementById('insert-ships').addEventListener('click', function(event){
 		event.preventDefault();
 		size = event.target.id
-		document.getElementById('insert-ships').innerHTML = `This ship is ${size}, click on the grid to place the ship`
+		document.getElementById('ship-info').innerHTML = `This ship is ${size}, click on the grid to place the ship`
 		currentShip = new Ship(event.target.innerHTML, newGrid, size)
 		Ship.removeShip(size)
 
@@ -128,8 +152,14 @@ function renderWinScreen(grid) {
 	document.getElementById('alerts').innerHTML = `<center><h1>${grid.user} won the game!!!</h1></center>`
 }
 
-
-
+function validCoordinate(coordinate) {
+	debugger
+	if (document.getElementById(coordinate) !== null) {
+		return true;
+	} else {
+		return false;
+	}
+}
 
 
 

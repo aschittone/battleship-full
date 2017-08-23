@@ -42,6 +42,7 @@ function CreateShip() {
 
 
 		checkPosition(selectedCoordinates) {
+            var length = parseInt(this.size);
              let xy = selectedCoordinates.split(",").map(number => (parseInt(number)))
              var gridShipKeys = Object.keys(this.grid.placedShipCoordinates)
              if (!(gridShipKeys.includes(selectedCoordinates)) && this.coordinates.length === 0 ) {
@@ -50,11 +51,19 @@ function CreateShip() {
                  this.grid.placedShipCoordinates[selectedCoordinates] = 1;
 
              } else if (!gridShipKeys.includes(selectedCoordinates) && this.coordinates.length === 1) {
-                 if ((xy[0] === this.coordinates[0][0] + 1 || xy[0] === this.coordinates[0][0] - 1) && xy[1] === this.coordinates[0][1]) {
+                 if ((xy[0] === this.coordinates[0][0] + 1) && (xy[1] === this.coordinates[0][1]) && (validCoordinate(`${this.coordinates[0][0] + length},${xy[1]}`))) {
                      this.coordinates.push(xy)
                      this.grid.addShip(selectedCoordinates)
                      this.grid.placedShipCoordinates[selectedCoordinates] = 1;
-                 } else if ((xy[1] === this.coordinates[0][1] + 1 || xy[1] === this.coordinates[0][1] - 1) && xy[0] === this.coordinates[0][0]) {
+                } else if ((xy[0] === this.coordinates[0][0] - 1) && (xy[1] === this.coordinates[0][1]) && (validCoordinate(`${this.coordinates[0][0] - length},${xy[1]}`))) {
+                     this.coordinates.push(xy)
+                     this.grid.addShip(selectedCoordinates)
+                     this.grid.placedShipCoordinates[selectedCoordinates] = 1;
+                } else if ((xy[1] === this.coordinates[0][1] + 1) && (xy[0] === this.coordinates[0][0]) && (validCoordinate(`${xy[0]},${this.coordinates[0][0] + length}`))) {
+                     this.coordinates.push(xy)
+                     this.grid.addShip(selectedCoordinates)
+                     this.grid.placedShipCoordinates[selectedCoordinates] = 1;
+                 } else if ((xy[1] === this.coordinates[0][1] - 1) && (xy[0] === this.coordinates[0][0]) && (validCoordinate(`${xy[0]},${this.coordinates[0][0] - length}`))) {
                      this.coordinates.push(xy)
                      this.grid.addShip(selectedCoordinates)
                      this.grid.placedShipCoordinates[selectedCoordinates] = 1;
