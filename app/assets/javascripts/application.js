@@ -103,6 +103,7 @@ document.addEventListener('turbolinks:load', function(){
 
 		document.getElementById('grid-container').addEventListener('click', function(event) {
 			if (event.target && event.target.nodeName == `DIV`) {
+				document.getElementById('alerts').innerHTML = ""
 				var coordinates = event.target.id
 				currentShip.setCoordinates(coordinates)
 				if (currentShip.coordinates.length === parseInt(size)) {
@@ -153,12 +154,43 @@ function renderWinScreen(grid) {
 }
 
 function validCoordinate(coordinate) {
-	debugger
+
 	if (document.getElementById(coordinate) !== null) {
 		return true;
 	} else {
+		document.getElementById('alerts').innerHTML = "<h4>Your ship cannot fit that way!!</h4>"
 		return false;
 	}
+}
+
+function noShipsInTheWay(firstCoordinate, lastCoordinate, grid, direction) {
+	var testCoordinates = []
+	switch(direction) {
+		case "down":
+			for (var i = firstCoordinate[0] + 1; i <= lastCoordinate[0]; i++){
+				testCoordinates.push(`${i},${firstCoordinate[1]}`);
+			}
+		case "up":
+			for (var i = lastCoordinate[0] + 1; i <= firstCoordinate[0]; i++){
+				testCoordinates.push(`${i},${firstCoordinate[1]}`)
+			}
+		case "left":
+			for (var i = lastCoordinate[1] + 1; i <= firstCoordinate[1]; i++){
+				testCoordinates.push(`${firstCoordinate[0]},${i}`)
+			}
+		case "right":
+			for (var i = firstCoordinate[1] + 1; i <= lastCoordinate[1]; i++){
+				testCoordinates.push(`${firstCoordinate[0]},${i}`)
+			}
+	}
+	
+	for (var coordinate in grid.placedShipCoordinates) {
+		if (testCoordinates.includes(coordinate)) {
+			document.getElementById('alerts').innerHTML = "<h4>Your ship cannot fit that way!!</h4>"
+			return false;
+		}
+	}
+	return true;
 }
 
 
