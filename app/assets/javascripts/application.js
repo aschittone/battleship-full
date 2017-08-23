@@ -154,7 +154,7 @@ function renderWinScreen(grid) {
 }
 
 function validCoordinate(coordinate) {
-
+	debugger
 	if (document.getElementById(coordinate) !== null) {
 		return true;
 	} else {
