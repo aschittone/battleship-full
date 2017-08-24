@@ -15,6 +15,7 @@ class Users {
   }
 
   render() {
-    document.getElementById('grid-container').innerHTML = `<ul>${this.userInfo()}</ul>`
+    document.getElementById('grid-container').innerHTML = `
+    <h1 class="text-center">Top Players</h1><ol>${this.userInfo()}</ol>`
   }
 }

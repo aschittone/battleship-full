@@ -98,7 +98,7 @@ function CreateGrid() {
 		if (Object.keys(opponentsGrid.placedShipCoordinates).includes(firingCoordinate)) {
 			opponentsGrid.placedShipCoordinates[firingCoordinate] = 2
 			this.firingBoard[firingCoordinate] = 2
-			alert('you have hit their ship!')
+			alert(`YOU'VE HIT A SHIP'!`)
 			document.getElementById(firingCoordinate).style = "background-color: red;"
 
 			var opponentsShips = Ship.all().filter(ship => ship.grid === opponentsGrid)
@@ -116,7 +116,7 @@ function CreateGrid() {
 				if (opponentsGrid.placedShipCoordinates[coordinate.join(",")] === 2) {
 					hitCount += 1
 					if (hitCount === hitShip.coordinates.length) {
-						alert('you destroyed the ship')
+						alert(`YOU'VE DESTROYED A SHIP!`)
 					}
 				}
 
@@ -125,7 +125,7 @@ function CreateGrid() {
 		} else {
 			opponentsGrid.placedShipCoordinates[firingCoordinate] = 0
 			this.firingBoard[firingCoordinate] = 0
-			alert('you have missed')
+			alert('YOU MISSED!')
 			document.getElementById(firingCoordinate).style = "background-color: blue;"
 		}
 		if (Grid.gameWon(opponentsGrid)) {
