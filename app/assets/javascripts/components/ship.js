@@ -19,11 +19,20 @@ function CreateShip() {
 		static insertShips() {
 			var insertArea = document.getElementById('insert-ships')
 			insertArea.innerHTML = `
+
+			<div class="container">
+			<div class="row" style="text-align:center;">
+			<div class="container">
 			<button id="1">Destroyer</button>
 			<button id="2">Cruiser</button>
 			<button id="3">Submarine</button>
 			<button id="4">Battleship</button>
-            <button id="5">Carrier</button>
+			<button id="5">Carrier</button>
+			</div>
+			</div>
+			</div>
+
+
 			`
 		}
 
@@ -47,12 +56,12 @@ function CreateShip() {
              var gridShipKeys = Object.keys(this.grid.placedShipCoordinates)
              if (!(gridShipKeys.includes(selectedCoordinates)) && this.coordinates.length === 0 ) {
                  this.buildShip(xy, selectedCoordinates)
-                 
+
 
              } else if (!gridShipKeys.includes(selectedCoordinates) && this.coordinates.length === 1) {
                 //down
                  if ((xy[0] === this.coordinates[0][0] + 1) && (xy[1] === this.coordinates[0][1]) && (validCoordinate(`${this.coordinates[0][0] + length},${xy[1]}`)) && noShipsInTheWay(this.coordinates[0], [this.coordinates[0][0] + length, xy[1]], this.grid, "down")) {
-        
+
                      this.buildShip(xy, selectedCoordinates)
                 // up
                 } else if ((xy[0] === this.coordinates[0][0] - 1) && (xy[1] === this.coordinates[0][1]) && (validCoordinate(`${this.coordinates[0][0] - length},${xy[1]}`)) && noShipsInTheWay(this.coordinates[0], [this.coordinates[0][0] - length, xy[1]], this.grid, "up")) {

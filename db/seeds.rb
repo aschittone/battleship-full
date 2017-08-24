@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+# user1 = User.create(name: "luke")
+# user2 = User.create(name: "andrew")
+# Game.create!(date: nil, winner: user1, loser: user2)
