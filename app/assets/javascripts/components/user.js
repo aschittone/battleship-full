@@ -5,7 +5,7 @@ class User {
     this.user_wins = userJson.user_wins
   }
   render() {
-    return `<li>${this.user_name}- ${this.user_wins}`
+    return `<h3><li>${this.user_name}- ${this.user_wins} wins</li></h3>`
   }
 
 }
