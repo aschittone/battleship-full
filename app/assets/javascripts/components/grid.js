@@ -85,12 +85,13 @@ function CreateGrid() {
 
 		static renderForm() {
 			document.getElementById('ship-info').innerHTML = ''
-			document.getElementById('grid-container').innerHTML = `
+			document.getElementById('grid-container').innerHTML = `<center>
 			<h2>Oponent, please enter your name here to start playing</h2>
 			<form id="create-form">
 			<input type="text" id="create-name">
 			<input class="submit-button" type="submit" value="submit">
 			</form>
+			</center>
 			`
 	}
 
