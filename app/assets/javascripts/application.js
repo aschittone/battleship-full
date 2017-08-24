@@ -23,6 +23,7 @@
 document.addEventListener('turbolinks:load', function(){
 
 	document.getElementById('grid-container').addEventListener('click', function(event) {
+
 			if (event.target && event.target.matches("input.submit-button")) {
 				event.preventDefault()
 				newGrid = new Grid(document.getElementById('create-name').value)
@@ -30,26 +31,6 @@ document.addEventListener('turbolinks:load', function(){
 			} else if (event.target && event.target.matches("input.history-button")) {
 				event.preventDefault()
 				getHistory()
-			}
-		
-	})
-	document.getElementById('insert-ships').addEventListener('click', function(event){
-		event.preventDefault();
-		size = event.target.id
-		document.getElementById('ship-info').innerHTML = `This ship is ${size}, click on the grid to place the ship`
-		currentShip = new Ship(event.target.innerHTML, newGrid, size)
-		Ship.removeShip(size)
-
-
-
-		document.getElementById('grid-container').addEventListener('click', function(event) {
-			if (event.target && event.target.nodeName == `DIV`) {
-				document.getElementById('alerts').innerHTML = ""
-				var coordinates = event.target.id
-				currentShip.setCoordinates(coordinates)
-				if (currentShip.coordinates.length === parseInt(size)) {
-					newGrid.checkFinished()
-				}
 			}
 		})
 		document.getElementById('insert-ships').addEventListener('click', function(event){
@@ -142,7 +123,6 @@ function noShipsInTheWay(firstCoordinate, lastCoordinate, grid, direction) {
 				testCoordinates.push(`${firstCoordinate[0]},${i}`)
 			}
 	}
-
 	for (var coordinate in grid.placedShipCoordinates) {
 		if (testCoordinates.includes(coordinate)) {
 			document.getElementById('alerts').innerHTML = "<h4>Your ship cannot fit that way!!</h4>"
