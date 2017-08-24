@@ -31,6 +31,26 @@ document.addEventListener('turbolinks:load', function(){
 				event.preventDefault()
 				getHistory()
 			}
+		
+	})
+	document.getElementById('insert-ships').addEventListener('click', function(event){
+		event.preventDefault();
+		size = event.target.id
+		document.getElementById('ship-info').innerHTML = `This ship is ${size}, click on the grid to place the ship`
+		currentShip = new Ship(event.target.innerHTML, newGrid, size)
+		Ship.removeShip(size)
+
+
+
+		document.getElementById('grid-container').addEventListener('click', function(event) {
+			if (event.target && event.target.nodeName == `DIV`) {
+				document.getElementById('alerts').innerHTML = ""
+				var coordinates = event.target.id
+				currentShip.setCoordinates(coordinates)
+				if (currentShip.coordinates.length === parseInt(size)) {
+					newGrid.checkFinished()
+				}
+			}
 		})
 		document.getElementById('insert-ships').addEventListener('click', function(event){
 			event.preventDefault();
@@ -94,7 +114,6 @@ function renderWinScreen(grid) {
 }
 
 function validCoordinate(coordinate) {
-
 	if (document.getElementById(coordinate) !== null) {
 		return true;
 	} else {
@@ -107,16 +126,15 @@ function noShipsInTheWay(firstCoordinate, lastCoordinate, grid, direction) {
 	var testCoordinates = []
 	switch(direction) {
 		case "down":
-			for (var i = firstCoordinate[0] + 1; i <= lastCoordinate[0]; i++){
+			for (var i = firstCoordinate[0] + 1; i < lastCoordinate[0]; i++){
 				testCoordinates.push(`${i},${firstCoordinate[1]}`);
 			}
 		case "up":
-			for (var i = lastCoordinate[0] + 1; i <= firstCoordinate[0]; i++){
+			for (var i = lastCoordinate[0] + 1; i < firstCoordinate[0]; i++){
 				testCoordinates.push(`${i},${firstCoordinate[1]}`)
 			}
 		case "left":
-			for (var i = lastCoordinate[1] + 1; i <= firstCoordinate[1]; i++){
-
+			for (var i = lastCoordinate[1]; i < firstCoordinate[1]; i++){
 				testCoordinates.push(`${firstCoordinate[0]},${i}`)
 			}
 		case "right":
