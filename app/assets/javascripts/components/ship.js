@@ -52,6 +52,7 @@ function CreateShip() {
              } else if (!gridShipKeys.includes(selectedCoordinates) && this.coordinates.length === 1) {
                 //down
                  if ((xy[0] === this.coordinates[0][0] + 1) && (xy[1] === this.coordinates[0][1]) && (validCoordinate(`${this.coordinates[0][0] + length},${xy[1]}`)) && noShipsInTheWay(this.coordinates[0], [this.coordinates[0][0] + length, xy[1]], this.grid, "down")) {
+        
                      this.buildShip(xy, selectedCoordinates)
                 // up
                 } else if ((xy[0] === this.coordinates[0][0] - 1) && (xy[1] === this.coordinates[0][1]) && (validCoordinate(`${this.coordinates[0][0] - length},${xy[1]}`)) && noShipsInTheWay(this.coordinates[0], [this.coordinates[0][0] - length, xy[1]], this.grid, "up")) {
