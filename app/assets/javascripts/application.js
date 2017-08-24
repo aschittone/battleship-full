@@ -89,6 +89,7 @@ document.addEventListener('turbolinks:load', function(){
 	document.getElementById('grid-container').addEventListener('click', function(event) {
 		if (event.target && event.target.matches("input.submit-button")) {
 			event.preventDefault()
+			document.getElementById('logo').remove();
 			newGrid = new Grid(document.getElementById('create-name').value)
 
 		}
@@ -177,6 +178,7 @@ function noShipsInTheWay(firstCoordinate, lastCoordinate, grid, direction) {
 			}
 		case "left":
 			for (var i = lastCoordinate[1] + 1; i <= firstCoordinate[1]; i++){
+				debugger
 				testCoordinates.push(`${firstCoordinate[0]},${i}`)
 			}
 		case "right":
@@ -184,7 +186,7 @@ function noShipsInTheWay(firstCoordinate, lastCoordinate, grid, direction) {
 				testCoordinates.push(`${firstCoordinate[0]},${i}`)
 			}
 	}
-
+	debugger
 	for (var coordinate in grid.placedShipCoordinates) {
 		if (testCoordinates.includes(coordinate)) {
 			document.getElementById('alerts').innerHTML = "<h4>Your ship cannot fit that way!!</h4>"
