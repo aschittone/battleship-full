@@ -89,7 +89,7 @@ document.addEventListener('turbolinks:load', function(){
 	document.getElementById('grid-container').addEventListener('click', function(event) {
 		if (event.target && event.target.matches("input.submit-button")) {
 			event.preventDefault()
-			document.getElementById('logo').remove();
+			//document.getElementById('logo').remove();
 			newGrid = new Grid(document.getElementById('create-name').value)
 
 		}
