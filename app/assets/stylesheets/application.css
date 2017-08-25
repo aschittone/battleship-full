@@ -122,9 +122,9 @@ input.transparent-input{
 		ol {
 		width:500px;
     -moz-column-count: 2;
-    -moz-column-gap: 100px;
+    -moz-column-gap: 150px;
     -webkit-column-count: 2;
-    -webkit-column-gap: 100px;
+    -webkit-column-gap: 150px;
     column-count: 2;
-    column-gap: 100px;
+    column-gap: 150px;
 }
