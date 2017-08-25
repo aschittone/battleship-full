@@ -24,19 +24,20 @@ document.addEventListener('turbolinks:load', function(){
 
 	document.getElementById('grid-container').addEventListener('click', function(event) {
 
-			if (event.target && event.target.matches("input.submit-button")) {
+			if (event.target && event.target.matches("button.submit-button")) {
 				event.preventDefault()
 				newGrid = new Grid(document.getElementById('create-name').value)
 				createUser(newGrid.user)
-			} else if (event.target && event.target.matches("input.history-button")) {
+			} else if (event.target && event.target.matches("button.history-button")) {
 				event.preventDefault()
+				document.getElementById('grid-container').style = ''
 				getHistory()
 			}
 		})
 		document.getElementById('insert-ships').addEventListener('click', function(event){
 			event.preventDefault();
 			size = event.target.id
-			document.getElementById('ship-info').innerHTML = `This ship is ${size}, click on the grid to place the ship`
+			document.getElementById('ship-info').innerHTML = `<br><h4 style="font-family: 'Black Ops One', cursive;">This ship is ${size} box(es) long, click on the grid to start placing the ship!</h4><br>`
 			currentShip = new Ship(event.target.innerHTML, newGrid, size)
 			Ship.removeShip(size)
 
@@ -140,13 +141,13 @@ document.addEventListener('turbolinks:load', function(){
 function renderTransferScreen(opponentsGrid) {
 	document.getElementById('firing-grid').innerHTML = "";
 	document.getElementById('players-grid').innerHTML = "";
-	document.getElementById('alerts').innerHTML = `<center><h2>Switching Players....</h2><h5>Pass the computer to your opponent</h5><button id="${opponentsGrid.id}">Click to switch player</button></center>`
+	document.getElementById('alerts').innerHTML = `<center><h2 font-family: 'Black Ops One', cursive;>Switching Players....</h2><h5>Pass the computer to your opponent</h5><button id="${opponentsGrid.id}">Click to switch player</button></center>`
 }
 
 function renderWinScreen(grid) {
 	document.getElementById('firing-grid').innerHTML = "";
 	document.getElementById('players-grid').innerHTML = "";
-	document.getElementById('alerts').innerHTML = `<center><h1>${grid.user} won the game!!!</h1></center>`
+	document.getElementById('alerts').innerHTML = `<center><h1 font-family: 'Black Ops One', cursive;>${grid.user} won the game!!!</h1></center>`
 }
 
 function validCoordinate(coordinate) {

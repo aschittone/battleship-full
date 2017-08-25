@@ -23,11 +23,11 @@ function CreateShip() {
 			<div class="container">
 			<div class="row" style="text-align:center;">
 			<div class="container">
-			<button id="1">Destroyer</button>
-			<button id="2">Cruiser</button>
-			<button id="3">Submarine</button>
-			<button id="4">Battleship</button>
-			<button id="5">Carrier</button>
+			<button class="btn btn-default btn3d" id="1">Destroyer</button>
+			<button class="btn btn-default btn3d" id="2">Cruiser</button>
+			<button class="btn btn-default btn3d" id="3">Submarine</button>
+			<button class="btn btn-default btn3d" id="4">Battleship</button>
+			<button class="btn btn-default btn3d" id="5">Carrier</button>
 			</div>
 			</div>
 			</div>
@@ -40,9 +40,9 @@ function CreateShip() {
 			if (parseInt(this.size) !== this.coordinates.length) {
 				this.checkPosition(selectedCoordinates)
 				if (Object.keys(this.grid.placedShipCoordinates).length === 15) {
-					alert('you have completed placing this ship. please give the computer to your oponent')
+					alert('You have completed placing this ship. Please give the computer to your opponent!')
 				} else if (parseInt(this.size) === this.coordinates.length){
-					alert('you have completed placing this ship')
+					alert('You have completed placing this ship!')
 				}
 			}
 		}

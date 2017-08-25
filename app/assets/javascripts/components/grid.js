@@ -44,8 +44,8 @@ function CreateGrid() {
 			var y = 0;
 			for (var i = 0; i < 10; i++) {
 				for (var j = 0; j < 10; j++) {
-					board += `<div class="grid-border" data-id="${x},${y}"> </div>`
-					playingBoard += `<div class="grid-border" id="${x},${y}"> </div>`
+					board += `<div><div class="grid-border data-id="${x},${y}"> </div></div>`
+					playingBoard += `<div ><div class="grid-border" id="${x},${y}"> </div></div>`
 					y++;
 				}
 				x++;
@@ -86,7 +86,7 @@ function CreateGrid() {
 		static renderForm() {
 			document.getElementById('ship-info').innerHTML = ''
 			document.getElementById('grid-container').innerHTML = `<center>
-			<h2>Oponent, please enter your name here to start playing</h2>
+			<h2 style="font-family: 'Black Ops One', cursive;">Opponent, please enter your name here to start playing!</h2>
 			<form id="create-form">
 			<input type="text" id="create-name">
 			<input class="submit-button" type="submit" value="submit">
