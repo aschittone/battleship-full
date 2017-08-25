@@ -38,8 +38,8 @@ function CreateGrid() {
 		renderPlayingBoard() {
 			var ownCoordinates = this.placedShipCoordinates;
 			var firingCoordinates = this.firingBoard;
-			var board = `<h2 id="${this.id}"> ${this.user}'s Board </h2>`;
-			var playingBoard = `<h2 id="${this.id}"> Firing Board </h2>`;
+			var board = `<h2 style="font-family: 'Black Ops One', cursive;" id="${this.id}"> ${this.user}'s Board </h2>`;
+			var playingBoard = `<h2 style="font-family: 'Black Ops One', cursive;" id="${this.id}"> Firing Board </h2>`;
 			var x = 0;
 			var y = 0;
 			for (var i = 0; i < 10; i++) {
@@ -88,8 +88,8 @@ function CreateGrid() {
 			document.getElementById('grid-container').innerHTML = `<center>
 			<h2 style="font-family: 'Black Ops One', cursive;">Opponent, please enter your name here to start playing!</h2>
 			<form id="create-form">
-			<input type="text" id="create-name">
-			<button class="submit-button" type="submit" value="submit">
+			<input style="font-family: 'Black Ops One', cursive;" class="form-control transparent-input" type="text" id="create-name" placeholder="Enter your name">
+			<button  style="font-family: 'Black Ops One', cursive;" class="btn btn-default btn3d submit-button">Submit</button>
 			</form>
 			</center>
 			`
