@@ -55,62 +55,64 @@ document.addEventListener('turbolinks:load', function(){
 			})
 
 		})
-		document.getElementById('grid-container').addEventListener('mouseover', function(event) {
-			if (event.target && event.target.matches("div.grid-border") ) {
-				if (event.target.style.cssText === "background-color: black;") {
-					event.target.style = "background-color: black; box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;";
-				} else {
-					event.target.style = "box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;"
-				}
 
-			}
-		})
-		document.getElementById('firing-grid').addEventListener('mouseover', function(event) {
-			if (event.target && event.target.matches("div.grid-border")) {
-			debugger	
-				if (event.target.style.cssText === "background-color: blue;") {
-					debugger
-					event.target.style = "background-color: blue; box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;";
-				} else if (event.target.style.cssText === "background-color: red;") {
-					event.target.style = "background-color: red; box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;";
-				} else {
-					event.target.style = "box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;"
-				}
-			}
-		})
-		document.getElementById('grid-container').addEventListener('mouseout', function(event) {
-			if (event.target && event.target.matches("div.grid-border")) {
-				if (event.target.style.cssText === "background-color: black;") {
-					var styling = event.target.style.cssText;
-					event.target.style = "";
-					event.target.style = styling;
-				} else if (event.target.style.cssText === "background-color: black; box-shadow: rgb(0, 0, 0) 0px 4px 8px 0px, rgb(0, 0, 0) 0px 6px 20px 0px;") {
-					event.target.style = "background-color: black;"
-				} else {
-					event.target.style = "";
-				}
-			}
-		})
-		document.getElementById('firing-grid').addEventListener('mouseout', function(event) {
-			if (event.target && event.target.matches("div.grid-border")) {	
-				
-				if (event.target.style.cssText === "background-color: blue;") {
-					var styling = event.target.style.cssText;
-					event.target.style = "";
-					event.target.style = styling;
-				} else if (event.target.style.cssText === "background-color: blue; box-shadow: rgb(0, 0, 0) 0px 4px 8px 0px, rgb(0, 0, 0) 0px 6px 20px 0px;") {
-					event.target.style = "background-color: blue;"
-				} else if (event.target.style.cssText === "background-color: red;") {
-					var styling = event.target.style.cssText;
-					event.target.style = "";
-					event.target.style = styling;
-				} else if (event.target.style.cssText === "background-color: red; box-shadow: rgb(0, 0, 0) 0px 4px 8px 0px, rgb(0, 0, 0) 0px 6px 20px 0px;") {
-					event.target.style = "background-color: red;"
-				} else {
-					event.target.style = "";
-				}
-			}
-		})
+		document.getElementById('grid-container').addEventListener('mouseover', function(event) {
+					 if (event.target && event.target.matches("div.grid-border") ) {
+							 if (event.target.style.cssText === "background-color: black;") {
+									 event.target.style = "background-color: black; box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;";
+							 } else {
+									 event.target.style = "box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;"
+							 }
+
+					 }
+			 })
+			 document.getElementById('firing-grid').addEventListener('mouseover', function(event) {
+					 if (event.target && event.target.matches("div.grid-border")) {
+					 debugger
+							 if (event.target.style.cssText === "background-color: blue;") {
+									 debugger
+									 event.target.style = "background-color: blue; box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;";
+							 } else if (event.target.style.cssText === "background-color: red;") {
+									 event.target.style = "background-color: red; box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;";
+							 } else {
+									 event.target.style = "box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;"
+							 }
+					 }
+			 })
+			 document.getElementById('grid-container').addEventListener('mouseout', function(event) {
+					 if (event.target && event.target.matches("div.grid-border")) {
+							 if (event.target.style.cssText === "background-color: black;") {
+									 var styling = event.target.style.cssText;
+									 event.target.style = "";
+									 event.target.style = styling;
+							 } else if (event.target.style.cssText === "background-color: black; box-shadow: rgb(0, 0, 0) 0px 4px 8px 0px, rgb(0, 0, 0) 0px 6px 20px 0px;") {
+									 event.target.style = "background-color: black;"
+							 } else {
+									 event.target.style = "";
+							 }
+					 }
+			 })
+			 document.getElementById('firing-grid').addEventListener('mouseout', function(event) {
+					 if (event.target && event.target.matches("div.grid-border")) {
+
+							 if (event.target.style.cssText === "background-color: blue;") {
+									 var styling = event.target.style.cssText;
+									 event.target.style = "";
+									 event.target.style = styling;
+							 } else if (event.target.style.cssText === "background-color: blue; box-shadow: rgb(0, 0, 0) 0px 4px 8px 0px, rgb(0, 0, 0) 0px 6px 20px 0px;") {
+									 event.target.style = "background-color: blue;"
+							 } else if (event.target.style.cssText === "background-color: red;") {
+									 var styling = event.target.style.cssText;
+									 event.target.style = "";
+									 event.target.style = styling;
+							 } else if (event.target.style.cssText === "background-color: red; box-shadow: rgb(0, 0, 0) 0px 4px 8px 0px, rgb(0, 0, 0) 0px 6px 20px 0px;") {
+									 event.target.style = "background-color: red;"
+							 } else {
+									 event.target.style = "";
+							 }
+					 }
+			 })
+
 		document.getElementById('firing-grid').addEventListener('click', function(event) {
 			var firingCoordinate = event.target.id
 			var currentGridId = document.querySelector('h2').id
@@ -141,20 +143,20 @@ document.addEventListener('turbolinks:load', function(){
 function renderTransferScreen(opponentsGrid) {
 	document.getElementById('firing-grid').innerHTML = "";
 	document.getElementById('players-grid').innerHTML = "";
-	document.getElementById('alerts').innerHTML = `<center><h2 font-family: 'Black Ops One', cursive;>Switching Players....</h2><h5>Pass the computer to your opponent</h5><button id="${opponentsGrid.id}">Click to switch player</button></center>`
+	document.getElementById('alerts').innerHTML = `<center><h2 style="font-family: 'Black Ops One', cursive;">Switching Players....</h2><h5 style="font-family: 'Black Ops One', cursive;">Pass the computer to your opponent</h5><button  style="font-family: 'Black Ops One', cursive;" id="${opponentsGrid.id}" class="btn btn-default btn3d submit-button">Click to switch player</button></center>`
 }
 
 function renderWinScreen(grid) {
 	document.getElementById('firing-grid').innerHTML = "";
 	document.getElementById('players-grid').innerHTML = "";
-	document.getElementById('alerts').innerHTML = `<center><h1 font-family: 'Black Ops One', cursive;>${grid.user} won the game!!!</h1></center>`
+	document.getElementById('alerts').innerHTML = `<center><h1 style="font-family: 'Black Ops One', cursive;">${grid.user} won the game!!!</h1></center>`
 }
 
 function validCoordinate(coordinate) {
 	if (document.getElementById(coordinate) !== null) {
 		return true;
 	} else {
-		document.getElementById('alerts').innerHTML = "<h4>Your ship cannot fit that way!!</h4>"
+		document.getElementById('alerts').innerHTML = `<h4 style="font-family: 'Black Ops One', cursive;">Your ship cannot fit that way!!</h4>`
 		return false;
 	}
 }
@@ -181,7 +183,7 @@ function noShipsInTheWay(firstCoordinate, lastCoordinate, grid, direction) {
 	}
 	for (var coordinate in grid.placedShipCoordinates) {
 		if (testCoordinates.includes(coordinate)) {
-			document.getElementById('alerts').innerHTML = "<h4>Your ship cannot fit that way!!</h4>"
+			document.getElementById('alerts').innerHTML = `<h4 style="font-family: 'Black Ops One', cursive;">Your ship cannot fit that way!!</h4>`
 			return false;
 		}
 	}
