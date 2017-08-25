@@ -156,7 +156,7 @@ function validCoordinate(coordinate) {
 	if (document.getElementById(coordinate) !== null) {
 		return true;
 	} else {
-		document.getElementById('alerts').innerHTML = `<h4 style="font-family: 'Black Ops One', cursive;">Your ship cannot fit that way!!</h4>`
+		document.getElementById('alerts').innerHTML = `<center><h4 style="font-family: 'Black Ops One', cursive;">Your ship cannot fit that way!!</h4></center>`
 		return false;
 	}
 }
@@ -183,7 +183,7 @@ function noShipsInTheWay(firstCoordinate, lastCoordinate, grid, direction) {
 	}
 	for (var coordinate in grid.placedShipCoordinates) {
 		if (testCoordinates.includes(coordinate)) {
-			document.getElementById('alerts').innerHTML = `<h4 style="font-family: 'Black Ops One', cursive;">Your ship cannot fit that way!!</h4>`
+			document.getElementById('alerts').innerHTML = `<center> <h4 style="font-family: 'Black Ops One', cursive;">Your ship cannot fit that way!!</h4></center>`
 			return false;
 		}
 	}
