@@ -16,6 +16,6 @@ class Users {
 
   render() {
     document.getElementById('grid-container').innerHTML = `
-    <h1 class="text-center">Top Players</h1><ol>${this.userInfo()}</ol>`
+    <center><h1 style="font-family: 'Black Ops One', cursive;">Top Players</h1><br><br><br><ol>${this.userInfo()}</ol></center>`
   }
 }
