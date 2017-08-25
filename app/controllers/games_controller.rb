@@ -2,8 +2,8 @@ class GamesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
-    loser = User.find_by(name: game_params[:winner])
-    winner = User.find_by(name: game_params[:loser])
+    winner = User.find_by(name: game_params[:winner])
+    loser = User.find_by(name: game_params[:loser])
     Game.create(winner: winner, loser: loser)
   end
 
