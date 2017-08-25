@@ -36,7 +36,7 @@ document.addEventListener('turbolinks:load', function(){
 		document.getElementById('insert-ships').addEventListener('click', function(event){
 			event.preventDefault();
 			size = event.target.id
-			document.getElementById('ship-info').innerHTML = `This ship is ${size}, click on the grid to place the ship`
+			document.getElementById('ship-info').innerHTML = `<br><h4>This ship is ${size} box(es) long, click on the grid to start placing the ship!</h4><br>`
 			currentShip = new Ship(event.target.innerHTML, newGrid, size)
 			Ship.removeShip(size)
 

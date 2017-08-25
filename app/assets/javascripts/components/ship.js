@@ -40,9 +40,9 @@ function CreateShip() {
 			if (parseInt(this.size) !== this.coordinates.length) {
 				this.checkPosition(selectedCoordinates)
 				if (Object.keys(this.grid.placedShipCoordinates).length === 15) {
-					alert('you have completed placing this ship. please give the computer to your oponent')
+					alert('You have completed placing this ship. Please give the computer to your opponent!')
 				} else if (parseInt(this.size) === this.coordinates.length){
-					alert('you have completed placing this ship')
+					alert('You have completed placing this ship!')
 				}
 			}
 		}
