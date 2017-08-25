@@ -44,8 +44,8 @@ function CreateGrid() {
 			var y = 0;
 			for (var i = 0; i < 10; i++) {
 				for (var j = 0; j < 10; j++) {
-					board += `<div><div class="grid-border data-id="${x},${y}"> </div></div>`
-					playingBoard += `<div ><div class="grid-border" id="${x},${y}"> </div></div>`
+					board += `<div class="grid-border" data-id="${x},${y}"> </div>`
+					playingBoard += `<div class="grid-border" id="${x},${y}"> </div>`
 					y++;
 				}
 				x++;
@@ -89,7 +89,7 @@ function CreateGrid() {
 			<h2 style="font-family: 'Black Ops One', cursive;">Opponent, please enter your name here to start playing!</h2>
 			<form id="create-form">
 			<input type="text" id="create-name">
-			<input class="submit-button" type="submit" value="submit">
+			<button class="submit-button" type="submit" value="submit">
 			</form>
 			</center>
 			`
