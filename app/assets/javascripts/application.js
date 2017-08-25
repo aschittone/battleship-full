@@ -54,7 +54,62 @@ document.addEventListener('turbolinks:load', function(){
 			})
 
 		})
+		document.getElementById('grid-container').addEventListener('mouseover', function(event) {
+			if (event.target && event.target.matches("div.grid-border") ) {
+				if (event.target.style.cssText === "background-color: black;") {
+					event.target.style = "background-color: black; box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;";
+				} else {
+					event.target.style = "box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;"
+				}
 
+			}
+		})
+		document.getElementById('firing-grid').addEventListener('mouseover', function(event) {
+			if (event.target && event.target.matches("div.grid-border")) {
+			debugger	
+				if (event.target.style.cssText === "background-color: blue;") {
+					debugger
+					event.target.style = "background-color: blue; box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;";
+				} else if (event.target.style.cssText === "background-color: red;") {
+					event.target.style = "background-color: red; box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;";
+				} else {
+					event.target.style = "box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;"
+				}
+			}
+		})
+		document.getElementById('grid-container').addEventListener('mouseout', function(event) {
+			if (event.target && event.target.matches("div.grid-border")) {
+				if (event.target.style.cssText === "background-color: black;") {
+					var styling = event.target.style.cssText;
+					event.target.style = "";
+					event.target.style = styling;
+				} else if (event.target.style.cssText === "background-color: black; box-shadow: rgb(0, 0, 0) 0px 4px 8px 0px, rgb(0, 0, 0) 0px 6px 20px 0px;") {
+					event.target.style = "background-color: black;"
+				} else {
+					event.target.style = "";
+				}
+			}
+		})
+		document.getElementById('firing-grid').addEventListener('mouseout', function(event) {
+			if (event.target && event.target.matches("div.grid-border")) {	
+				
+				if (event.target.style.cssText === "background-color: blue;") {
+					var styling = event.target.style.cssText;
+					event.target.style = "";
+					event.target.style = styling;
+				} else if (event.target.style.cssText === "background-color: blue; box-shadow: rgb(0, 0, 0) 0px 4px 8px 0px, rgb(0, 0, 0) 0px 6px 20px 0px;") {
+					event.target.style = "background-color: blue;"
+				} else if (event.target.style.cssText === "background-color: red;") {
+					var styling = event.target.style.cssText;
+					event.target.style = "";
+					event.target.style = styling;
+				} else if (event.target.style.cssText === "background-color: red; box-shadow: rgb(0, 0, 0) 0px 4px 8px 0px, rgb(0, 0, 0) 0px 6px 20px 0px;") {
+					event.target.style = "background-color: red;"
+				} else {
+					event.target.style = "";
+				}
+			}
+		})
 		document.getElementById('firing-grid').addEventListener('click', function(event) {
 			var firingCoordinate = event.target.id
 			var currentGridId = document.querySelector('h2').id
