@@ -54,7 +54,7 @@ function CreateShip() {
             let length = parseInt(this.size) - 1;
             let xy = selectedCoordinates.split(",").map(number => (parseInt(number)))
             let gridShipKeys = Object.keys(this.grid.placedShipCoordinates)
-            debugger
+
             if (!(gridShipKeys.includes(selectedCoordinates)) && this.coordinates.length === 0) {
                 this.buildShip(xy, selectedCoordinates)
 

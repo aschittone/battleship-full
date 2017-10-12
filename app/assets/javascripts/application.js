@@ -68,9 +68,9 @@ document.addEventListener('turbolinks:load', function () {
 	})
 	document.getElementById('firing-grid').addEventListener('mouseover', function (event) {
 		if (event.target && event.target.matches("div.grid-border")) {
-			debugger
+
 			if (event.target.style.cssText === "background-color: blue;") {
-				debugger
+
 				event.target.style = "background-color: blue; box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;";
 			} else if (event.target.style.cssText === "background-color: red;") {
 				event.target.style = "background-color: red; box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;";
