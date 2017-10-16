@@ -149,7 +149,7 @@ function renderTransferScreen(opponentsGrid) {
 function renderWinScreen(grid) {
 	document.getElementById('firing-grid').innerHTML = "";
 	document.getElementById('players-grid').innerHTML = "";
-	document.getElementById('alerts').innerHTML = `<center><h1 style="font-family: 'Black Ops One', cursive;">${grid.user} won the game!!!</h1> <br> <button style="font-family: 'Black Ops One', cursive;" onclick="location.href='http://localhost:3000'" class="btn btn-default btn3d">Play again?</button></center>`
+	document.getElementById('alerts').innerHTML = `<center><h1 style="font-family: 'Black Ops One', cursive;">${grid.user} won the game!!!</h1> <br> <button style="font-family: 'Black Ops One', cursive;" onclick="location.href='https://ship-battle.herokuapp.com'" class="btn btn-default btn3d">Play again?</button></center>`
 }
 
 function validCoordinate(coordinate) {
