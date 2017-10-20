@@ -17,7 +17,7 @@
 //= require components/ship.js
 //= require components/user.js
 //= require components/users.js
-//= require adapters/userAdapter.js
+//= require adapters/UsersAdapter.js
 
 
 document.addEventListener('turbolinks:load', function () {
@@ -195,6 +195,6 @@ function getHistory() {
 }
 
 function createUser(user) {
-	newUser = new UserAdapter(user)
-	UserAdapter.createOrFindUser(newUser)
+	newUser = new UsersAdapter(user)
+	UsersAdapter.createOrFindUser(newUser)
 }

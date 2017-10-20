@@ -131,7 +131,7 @@ function CreateGrid() {
 			}
 			if (Grid.gameWon(opponentsGrid)) {
 				renderWinScreen(this)
-				UserAdapter.saveGameResults(this.user, opponentsGrid.user)
+				UsersAdapter.saveGameResults(this.user, opponentsGrid.user)
 			} else {
 				renderTransferScreen(opponentsGrid);
 			}

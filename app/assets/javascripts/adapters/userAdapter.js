@@ -1,4 +1,4 @@
-class UserAdapter {
+class UsersAdapter {
   constructor(user) {
     this.baseUrl = 'https://ship-battle.herokuapp.com/users'
 
