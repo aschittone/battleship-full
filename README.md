@@ -1,24 +1,15 @@
-# README
+# Battleship 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is a modern replication of the 2-player battleship game. The front end to this application is built out of vanilla JS and jQuery. The backend to this application (solely for the purpose of persisting user data), is built out of Ruby on Rails, using postgreSQL for a database management system. 
 
-Things you may want to cover:
+# Demo
 
-* Ruby version
+https://ship-battle.herokuapp.com/
 
-* System dependencies
 
-* Configuration
+# Language/Tools Used 
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+JavaScript 
+jQuery
+Ruby on Rails
+Bootstrap
